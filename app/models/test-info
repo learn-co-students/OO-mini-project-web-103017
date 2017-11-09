@@ -1,0 +1,18 @@
+ketchup = Ingredients.new("ketchup")
+mustard = Ingredients.new("mustard")
+recipe = Recipe.new("new recipe", [ketchup, mustard])
+tashawn = User.new("Tashawn")
+tashawn.add_recipe_card(recipe, Time.now, 5)
+newrecipe = Recipe.new("newer recipe", [ketchup, mustard])
+recipecard = RecipeCard.new(newrecipe, Time.now, 3, tashawn)
+newrecipecard = RecipeCard.new(newrecipe, Time.now, 3, tashawn)
+Recipe.most_popular
+newestrecipe = Recipe.new("newest recipe", [ketchup, mustard])
+tashawn.add_recipe_card(newestrecipe, Time.now, 7)
+tashawn.declare_allergen(ketchup)
+mayo = Ingredients.new("mayo")
+pickles = Ingredients.new("pickles")
+ingredientsarr = [mayo, pickles]
+tashawn.declare_allergen(ketchup)
+tashawn.declare_allergen(mustard)
+ringredient = RecipeIngredient.new(ketchup, recipe)
