@@ -51,6 +51,23 @@ class User
     @user_recipes.last
   end
 
+  def safe_recipes
+
+    no_goods = RecipeIngredient.all.select do |recipe_instance|
+        self.allergens.include?(recipe_instance.ingredient)
+    end
+    
+    no_good_recipes = no_goods.map do |instance|
+      instance.recipe
+    end
+
+    Recipe.all.reject do |recipe|
+      no_good_recipes.include?(recipe)
+    end
+  end
+
+
+
 end
 
 

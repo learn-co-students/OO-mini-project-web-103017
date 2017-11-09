@@ -18,6 +18,8 @@ connie.declare_allergen(shrimp)
 bob.declare_allergen(shrimp)
 
 noodles.add_ingredients([shrimp, mushroom])
+pasta.add_ingredients([mushroom])
+pie.add_ingredients([mushroom])
 
 
 
