@@ -2,7 +2,6 @@ class User
   @@all = []
 
   def initialize(name)
-    # IMPPLEMENT: Don't allow duplicate users to be created
     @name = name
     @@all << self
   end

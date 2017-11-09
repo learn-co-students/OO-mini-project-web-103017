@@ -8,6 +8,7 @@ end
 priyam = User.new("Priyam")
 richard = User.new("Richard")
 User.all
+richard = User.new("Richard")
 
 cooked_rice = Recipe.new
 tomato_soup = Recipe.new
