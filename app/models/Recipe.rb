@@ -31,8 +31,8 @@ class Recipe
   end
 
   def users
-    user_rc = RecipeCard.all.select{|card| card.recipe == self}
-    user_rc.map {|rc| rc.user}
+    user_rc = RecipeCard.all.map{|card| if card.recipe == self return card.ingredient end}
+    # user_rc.map {|rc| rc.user}
   end
 
   def allergens
