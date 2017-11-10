@@ -1,0 +1,34 @@
+erica = User.new("Erica")
+bob = User.new("Bob")
+meatloaf = Recipe.new("Meatloaf")
+bread = Recipe.new("Bread")
+flan = Recipe.new("Flan")
+tuna = Recipe.new("Tuna")
+
+
+card1 = erica.add_recipe_card(meatloaf, "July 5", 5)
+
+card2 = erica.add_recipe_card(bread, "Aug 1", 4)
+
+card3 = erica.add_recipe_card(flan, "Aug 1", 1)
+
+card4 = erica.add_recipe_card(tuna, "Aug 3", 3)
+
+bcard1 = bob.add_recipe_card(tuna, "Jan 1", 5)
+
+##################
+
+meatloaf = Recipe.new("Meatloaf")
+tomato = Ingredient.new("tomato")
+breadcrumbs = Ingredient.new("breadcrumbs")
+bread = Recipe.new("Bread")
+flour = Ingredient.new("flour")
+water = Ingredient.new("water")
+
+bread.add_ingredients([flour, water])
+meatloaf.add_ingredients([tomato, breadcrumbs])
+
+erica.declare_allergen(tomato)
+bob.declare_allergen(tomato)
+
+##################
