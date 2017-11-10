@@ -1,5 +1,5 @@
  class Recipe
-   attr_accessor :users, :ingredients, :allergens, :recipecards, :name
+   attr_accessor :ingredients, :allergens, :recipecards, :name
    @@all_recipes = []
 
    def initialize (name, ingredients_array)
