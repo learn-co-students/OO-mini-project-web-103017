@@ -59,4 +59,16 @@ class User
      cards.sort_by {|rc_instance| rc_instance.date}.last.recipe
   end
 
+  def safe_recipe
+    r_al_instances = RecipeIngredients.all.select do |r_instance|
+            self.allergens.include?(r_instance.ingredient)
+      end
+    recipe_al = r_al_instances.map {|instance| instance.recipe}
+    Recipe.all.reject do |recipe|
+      recipe_al.include?(recipe)
+    end
+
+  end
+
+
 end
