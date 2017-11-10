@@ -1,9 +1,3 @@
-require_relative '../config/environment.rb'
-
-def reload
-  load 'config/environment.rb'
-end
-
 erica = User.new("Erica")
 bob = User.new("Bob")
 jake = User.new("Jake")
@@ -36,5 +30,3 @@ meatloaf.add_ingredients([tomato, breadcrumbs])
 erica.declare_allergen(tomato)
 bob.declare_allergen(tomato)
 erica.declare_allergen(flour)
-
-Pry.start
