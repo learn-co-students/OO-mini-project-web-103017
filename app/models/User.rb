@@ -37,11 +37,11 @@ class User
   end
 
   def top_three_recipes
-    self.recipe_cards.sort_by{ |card| card.rating}.reverse![0..2]
+    self.recipe_cards.sort_by{ |card| card.rating}.last(3)
   end
 
   def most_recent_recipes
-    self.recipe_cards[-1]
+    self.recipe_cards.last
   end
 
 end

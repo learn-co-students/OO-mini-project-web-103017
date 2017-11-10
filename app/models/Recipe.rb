@@ -31,8 +31,8 @@ class Recipe
   end
 
   def users
-    user_rc = RecipeCard.all.map{|card| if card.recipe == self return card.ingredient end}
-    # user_rc.map {|rc| rc.user}
+    user_rc = RecipeCard.all.select{|card| card.recipe == self}
+    user_rc.map {|rc| rc.user}
   end
 
   def allergens
@@ -51,14 +51,16 @@ class Recipe
 
 
   def self.most_popular
-    recipes_cards =
-      Recipe.all.map do |recipe|
-        RecipeCard.all.select do |card|
-          card.recipe == recipe
-          card
-        end
-      end.sort_by{ |array| array.length}
-    recipes_cards[-1][0].recipe
+    # recipes_cards =
+    #   Recipe.all.map do |recipe|
+    #     RecipeCard.all.select do |card|
+    #       card.recipe == recipe
+    #       card
+    #     end
+    #   end.sort_by{ |array| array.length}
+    # recipes_cards[-1][0].recipe
+
+RecipeCard.all.map{ |card| card.recipe}.inject(Hash.new(0)){|r,i| r[i] += 1; r}.max_by{|k,v| v}[0]
   end
 
 end
