@@ -1,12 +1,11 @@
 class User
 #has many recipes through recipe cards
-  attr_accessor :name, :allergens
+  attr_accessor :name
 
   @@all = []
 
   def initialize(name)
     @name = name
-    @allergens = []
     @@all << self
   end
 
