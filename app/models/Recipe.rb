@@ -42,52 +42,62 @@ class Recipe
 
   def users
     # Recipe#users should return the user instances who have recipe cards with this recipe
-    users_with_this_recipe = []
-    User.all.each do |user| #for ever user,
-      user.recipes.each do |cards| # go over all of his recipe cards
-        if cards.recipe.name == @name #if his recipe card recipe matches the name of this recipe
-          users_with_this_recipe << user ## add user instance to users_with_this_recipe
-          break
-        end
-      end
-    end
-    users_with_this_recipe
+    #users_with_this_recipe = []
+
+    # User.all.each do |user| #for ever user,
+    #   user.recipes.each do |cards| # go over all of his recipe cards
+    #     if cards.recipe == self #if his recipe card recipe matches the name of this recipe
+    #       users_with_this_recipe << user ## add user instance to users_with_this_recipe
+    #       break
+    #     end
+    #   end
+    # end
+    # users_with_this_recipe
+
+    #
+    user_rc = RecipeCard.all.select {|card| card.recipe == self}
+    user_rc.map{|rc| rc.user}
 
   end
 
   def ingredients
     # Recipe#ingredients should return all of the ingredients in this recipe
 
-    @ingredients
+    recipes_ings = RecipeIngredient.all.select{|card| card.recipe == self}
 
+    recipes_ings.map{|ing| ing.ingredient}
   end
-
 
   def allergens
     # Recipe#allergens should return all of the ingredients in this recipe that are allergens
 
-    ings = ingredients.collect do |ings|
-       ings.name
+    ings = self.ingredients.collect do |ings|
+       ings
     end
+
+
     alls = Allergen.all.collect do |allergen|
-      allergen.ingredient.name
+      allergen.ingredient
     end
-    allergens_in_this_recipe = []
-    ings.each do |item|
-      if alls.include?(item)
-        allergens_in_this_recipe << item
-      end
-    end
-    allergens_in_this_recipe
+    # allergens_in_this_recipe = []
+    # ings.each do |item|
+    #   if alls.include?(item)
+    #     allergens_in_this_recipe << item
+    #   end
+    # end
+
+    alls & ings
+    # allergens_in_this_recipe
 
   end
 
   def add_ingredients(ingredients)
 
-    @ingredients = ingredients
+    #@ingredients = ingredients
 
-    # Recipe#add_ingredients should take an array of ingredient instances as an argument, and associate each of those ingredients with this recip
-
+    ingredients.map do |ing|
+      RecipeIngredient.new(ing, self)
+    end
   end
 
 end

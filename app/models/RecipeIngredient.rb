@@ -1,6 +1,7 @@
 class RecipeIngredient
   @@all = []
-  
+
+  attr_accessor :recipe, :ingredient
   def initialize(ingredient, recipe)
     @ingredient = ingredient
     @recipe = recipe
@@ -12,17 +13,6 @@ class RecipeIngredient
   def self.all
     @@all
   end
-
-  def ingredient
-    # RecipeIngredient#ingredient should return the ingredient instance
-    @ingredient
-
-  end
-
-  def recipe
-    @recipe
-  end
-
 
 end
 
